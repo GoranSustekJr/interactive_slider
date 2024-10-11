@@ -195,8 +195,9 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
   late final _height = ValueNotifier(widget.unfocusedHeight);
   late final _opacity = ValueNotifier(widget.unfocusedOpacity);
   late final _margin = ValueNotifier(widget.unfocusedMargin);
-  late final _progress =
-      widget.controller ?? ValueNotifier(widget.initialProgress);
+  late final _progress = _opacity.value > widget.unfocusedOpacity
+      ? widget.controller ?? ValueNotifier(widget.initialProgress)
+      : ValueNotifier(widget.initialProgress);
   final _startIconKey = GlobalKey();
   final _endIconKey = GlobalKey();
   late ElasticOutCurve _transitionCurve;
