@@ -500,10 +500,15 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
   }
 
   double get _adjustedProgress =>
-      lerpDouble(widget.min, widget.max, _progress.value) ?? _progress.value;
+      lerpDouble(widget.min, widget.max,
+          _opacity.value < 1 ? _stoppedProgress.value : _progress.value) ??
+      _progress.value;
 
   double _adjustedSegmentedProgress(int numberOfSegments) {
-    final segment = (_progress.value * numberOfSegments).round();
+    final segment = (_opacity.value < 1
+            ? _stoppedProgress.value
+            : _progress.value * numberOfSegments)
+        .round();
     final step = (widget.max - widget.min) / numberOfSegments;
     return (segment * step) + widget.min;
   }
