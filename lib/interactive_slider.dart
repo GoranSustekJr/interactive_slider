@@ -467,6 +467,10 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
     } else {
       widget.onProgressUpdated?.call(_adjustedProgress);
     }
+    if (_opacity.value < 1) {
+      _stoppedProgress.value =
+          widget.controller != null ? widget.controller!.value : 0;
+    }
   }
 
   Widget _opacityBuilder(BuildContext context, double opacity, Widget? child) {
