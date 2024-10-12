@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:interactive_slider/interactive_slider.dart';
+import 'package:interactive_slider/interactive_slider_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +36,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _controller = InteractiveSliderController(0.5);
+  final _controller = InteractiveSliderController(
+    0.5,
+  );
 
   @override
   Widget build(BuildContext context) {
