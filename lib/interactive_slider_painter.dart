@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interactive_slider/interactive_slider.dart';
+import 'package:interactive_slider_fork/interactive_slider.dart';
 
 class InteractiveSliderPainter extends CustomPainter {
   InteractiveSliderPainter({
