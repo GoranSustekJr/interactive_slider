@@ -195,6 +195,7 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
   late final _height = ValueNotifier(widget.unfocusedHeight);
   late final _opacity = ValueNotifier(widget.unfocusedOpacity);
   late final _margin = ValueNotifier(widget.unfocusedMargin);
+  final ValueNotifier<double> _stoppedProgress = ValueNotifier(0);
   late final _progress =
       widget.controller ?? ValueNotifier(widget.initialProgress);
   final _startIconKey = GlobalKey();
@@ -293,7 +294,7 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
         builder: _opacityBuilder,
         child: CustomPaint(
           painter: InteractiveSliderPainter(
-            progress: _progress,
+            progress: _opacity.value < 1 ? _progress : _stoppedProgress,
             color: widget.foregroundColor ?? brightnessColor,
             gradient: widget.gradient,
             gradientSize: widget.gradientSize,
@@ -487,6 +488,8 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
   void _onChanged() {
     print("object changin, ${_opacity.value}");
     if (_opacity.value < 1) {
+      _stoppedProgress.value =
+          widget.controller != null ? widget.controller!.value : 0;
       final progress = switch (widget.numberOfSegments) {
         int numberOfSegments => _adjustedSegmentedProgress(numberOfSegments),
         _ => _adjustedProgress,
