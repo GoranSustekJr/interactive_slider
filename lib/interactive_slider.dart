@@ -485,7 +485,7 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
   }
 
   void _onChanged() {
-    print("object changin");
+    print("object changin, ${_opacity.value}");
     if (_opacity.value < 1) {
       final progress = switch (widget.numberOfSegments) {
         int numberOfSegments => _adjustedSegmentedProgress(numberOfSegments),
