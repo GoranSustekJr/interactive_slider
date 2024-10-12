@@ -395,8 +395,8 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
               }
               sliderWidth -= widget.iconGap * 2;
             }
-            _progress.value =
-                (_progress.value + (details.delta.dx / sliderWidth))
+            _stoppedProgress.value =
+                (_stoppedProgress.value + (details.delta.dx / sliderWidth))
                     .clamp(0.0, 1.0);
           },
           child: IconTheme(
@@ -460,6 +460,7 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
     _height.value = widget.unfocusedHeight;
     _opacity.value = widget.unfocusedOpacity;
     _margin.value = widget.unfocusedMargin;
+    _progress.value = _stoppedProgress.value;
     if (widget.numberOfSegments case int numberOfSegments) {
       widget.onProgressUpdated
           ?.call(_adjustedSegmentedProgress(numberOfSegments));
