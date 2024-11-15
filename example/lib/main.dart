@@ -82,67 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
               // This callback runs once when the user finishes updating the slider
             },
           ),
-          const Divider(),
-          const InteractiveSlider(
-            enabled: true,
-            startIcon: Icon(CupertinoIcons.volume_down),
-            endIcon: Icon(CupertinoIcons.volume_up),
-          ),
-          const InteractiveSlider(
-            iconPosition: IconPosition.below,
-            startIcon: Icon(CupertinoIcons.volume_down),
-            endIcon: Icon(CupertinoIcons.volume_up),
-            centerIcon: Text('Center'),
-          ),
-          const InteractiveSlider(
-            iconPosition: IconPosition.inside,
-            startIcon: Icon(CupertinoIcons.volume_down),
-            endIcon: Icon(CupertinoIcons.volume_up),
-            centerIcon: Text('Center'),
-            unfocusedHeight: 40,
-            focusedHeight: 50,
-            iconGap: 16,
-          ),
-          const Divider(),
-          const InteractiveSlider(
-            unfocusedHeight: 30,
-            focusedHeight: 40,
-            numberOfSegments: 7,
-          ),
-          const InteractiveSlider(
-            unfocusedHeight: 30,
-            focusedHeight: 40,
-            shapeBorder: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-            ),
-          ),
-          const InteractiveSlider(
-            unfocusedHeight: 30,
-            focusedHeight: 40,
-            shapeBorder: BeveledRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-            ),
-          ),
-          const Divider(),
-          const InteractiveSlider(
-            unfocusedOpacity: 1,
-            unfocusedHeight: 30,
-            focusedHeight: 40,
-            foregroundColor: Colors.deepPurple,
-          ),
-          const InteractiveSlider(
-            unfocusedOpacity: 1,
-            unfocusedHeight: 30,
-            focusedHeight: 40,
-            gradient: LinearGradient(colors: [Colors.green, Colors.red]),
-          ),
-          const InteractiveSlider(
-            unfocusedOpacity: 1,
-            unfocusedHeight: 30,
-            focusedHeight: 40,
-            gradient: LinearGradient(colors: [Colors.green, Colors.red]),
-            gradientSize: GradientSize.progressWidth,
-          ),
         ],
       ),
     );

@@ -1,4 +1,4 @@
-name: interactive_slider_fork
+name: interactive_slider
 description: A Cupertino-themed interactive continuous slider widget that is inspired by the slider widgets used in Apple Music.
 version: 0.4.0
 repository: https://github.com/GoranSustekJr/interactive_slider

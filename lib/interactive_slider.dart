@@ -3,10 +3,10 @@ library interactive_slider;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:interactive_slider_fork/interactive_slider_controller.dart';
-import 'package:interactive_slider_fork/interactive_slider_painter.dart';
+import 'package:interactive_slider/interactive_slider_controller.dart';
+import 'package:interactive_slider/interactive_slider_painter.dart';
 
-export 'package:interactive_slider_fork/interactive_slider_controller.dart';
+export 'package:interactive_slider/interactive_slider_controller.dart';
 
 enum IconPosition {
   below,
@@ -292,26 +292,31 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
       child: ValueListenableBuilder<double>(
         valueListenable: _opacity,
         builder: _opacityBuilder,
-        child: CustomPaint(
-          painter: InteractiveSliderPainter(
-            progress: _opacity.value < 1 ? _progress : _stoppedProgress,
-            color: widget.foregroundColor ?? brightnessColor,
-            gradient: widget.gradient,
-            gradientSize: widget.gradientSize,
-            numberOfSegments: widget.numberOfSegments,
-            segmentDividerColor: widget.segmentDividerColor,
-            segmentDividerWidth: widget.segmentDividerWidth,
-          ),
-          child: switch (widget.iconPosition) {
-            IconPosition.inside => Padding(
-                padding: horizontalPadding,
-                child: Row(children: _iconChildren),
+        child: ValueListenableBuilder(
+          valueListenable: _stoppedProgress,
+          builder: (_, __, ___) {
+            return CustomPaint(
+              painter: InteractiveSliderPainter(
+                progress: _opacity.value < 1 ? _progress : _stoppedProgress,
+                color: widget.foregroundColor ?? brightnessColor,
+                gradient: widget.gradient,
+                gradientSize: widget.gradientSize,
+                numberOfSegments: widget.numberOfSegments,
+                segmentDividerColor: widget.segmentDividerColor,
+                segmentDividerWidth: widget.segmentDividerWidth,
               ),
-            IconPosition.inline when widget.centerIconBuilder != null =>
-              _iconBuilder(widget.centerIconBuilder!, widget.centerIcon),
-            IconPosition.inline when widget.centerIcon != null =>
-              Center(child: widget.centerIcon),
-            _ => const SizedBox.shrink(),
+              child: switch (widget.iconPosition) {
+                IconPosition.inside => Padding(
+                    padding: horizontalPadding,
+                    child: Row(children: _iconChildren),
+                  ),
+                IconPosition.inline when widget.centerIconBuilder != null =>
+                  _iconBuilder(widget.centerIconBuilder!, widget.centerIcon),
+                IconPosition.inline when widget.centerIcon != null =>
+                  Center(child: widget.centerIcon),
+                _ => const SizedBox.shrink(),
+              },
+            );
           },
         ),
       ),
@@ -398,6 +403,7 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
             _stoppedProgress.value =
                 (_stoppedProgress.value + (details.delta.dx / sliderWidth))
                     .clamp(0.0, 1.0);
+            print("UPDATR; $_stoppedProgress");
           },
           child: IconTheme(
             data: theme.iconTheme.copyWith(
