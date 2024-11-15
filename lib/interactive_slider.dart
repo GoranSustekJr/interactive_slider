@@ -3,10 +3,10 @@ library interactive_slider;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:interactive_slider/interactive_slider_controller.dart';
-import 'package:interactive_slider/interactive_slider_painter.dart';
+import 'package:interactive_slider_path/interactive_slider_controller.dart';
+import 'package:interactive_slider_path/interactive_slider_painter.dart';
 
-export 'package:interactive_slider/interactive_slider_controller.dart';
+export 'package:interactive_slider_path/interactive_slider_controller.dart';
 
 enum IconPosition {
   below,
