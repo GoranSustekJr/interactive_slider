@@ -403,7 +403,9 @@ class _InteractiveSliderState extends State<InteractiveSlider> {
             _stoppedProgress.value =
                 (_stoppedProgress.value + (details.delta.dx / sliderWidth))
                     .clamp(0.0, 1.0);
-            print("UPDATR; $_stoppedProgress");
+            _progress.value =
+                (_stoppedProgress.value + (details.delta.dx / sliderWidth))
+                    .clamp(0.0, 1.0);
           },
           child: IconTheme(
             data: theme.iconTheme.copyWith(
